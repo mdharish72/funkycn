@@ -1,91 +1,70 @@
-import { Button } from "@/components/ui/button"
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
-import {
-  Tabs,
-  TabsContent,
-  TabsList,
-  TabsTrigger,
-} from "@/components/ui/tabs"
+"use client";
 
-export default function TabsPage() {
+import { Tabs } from "@/components/ui/animated-tabs";
+
+export default function TabsDemo() {
+  const tabs = [
+    {
+      title: "Product",
+      value: "product",
+      content: (
+        <div className="w-full overflow-hidden relative h-full rounded-2xl p-10 text-xl md:text-4xl font-bold text-white bg-gradient-to-br from-purple-700 to-violet-900 comic-border-2 comic-shadow-2">
+          <p>Product Tab</p>
+          <DummyContent />
+        </div>
+      ),
+    },
+    {
+      title: "Services",
+      value: "services",
+      content: (
+        <div className="w-full overflow-hidden relative h-full rounded-2xl p-10 text-xl md:text-4xl font-bold text-white bg-gradient-to-br from-yellow-700 to-orange-900 comic-border-2 comic-shadow-2">
+          <p>Services tab</p>
+          <DummyContent />
+        </div>
+      ),
+    },
+    {
+      title: "Playground",
+      value: "playground",
+      content: (
+        <div className="w-full overflow-hidden relative h-full rounded-2xl p-10 text-xl md:text-4xl font-bold text-white bg-gradient-to-br from-green-700 to-emerald-900 comic-border-2 comic-shadow-2">
+          <p>Playground tab</p>
+          <DummyContent />
+        </div>
+      ),
+    },
+    {
+      title: "Content",
+      value: "content",
+      content: (
+        <div className="w-full overflow-hidden relative h-full rounded-2xl p-10 text-xl md:text-4xl font-bold text-white bg-gradient-to-br from-blue-700 to-cyan-900 comic-border-2 comic-shadow-2">
+          <p>Content tab</p>
+          <DummyContent />
+        </div>
+      ),
+    },
+    {
+      title: "Random",
+      value: "random",
+      content: (
+        <div className="w-full overflow-hidden relative h-full rounded-2xl p-10 text-xl md:text-4xl font-bold text-white bg-gradient-to-br from-pink-700 to-rose-900 comic-border-2 comic-shadow-2">
+          <p>Random tab</p>
+          <DummyContent />
+        </div>
+      ),
+    },
+  ];
+
   return (
-    <div className="space-y-6">
-      <div>
-        <h1 className="text-3xl font-bold">Tabs</h1>
-        <p className="text-muted-foreground">A set of layered sections of content—known as tab panels—that are displayed one at a time.</p>
-      </div>
-      
-      <div className="flex flex-col gap-4">
-        <Card>
-          <CardHeader>
-            <CardTitle>Default</CardTitle>
-          </CardHeader>
-          <CardContent>
-             <Tabs defaultValue="account" className="w-[400px]">
-              <TabsList className="grid w-full grid-cols-2">
-                <TabsTrigger value="account">Account</TabsTrigger>
-                <TabsTrigger value="password">Password</TabsTrigger>
-              </TabsList>
-              <TabsContent value="account">
-                <Card>
-                  <CardHeader>
-                    <CardTitle>Account</CardTitle>
-                    <CardDescription>
-                      Make changes to your account here. Click save when you're done.
-                    </CardDescription>
-                  </CardHeader>
-                  <CardContent className="space-y-2">
-                    <div className="space-y-1">
-                      <Label htmlFor="name">Name</Label>
-                      <Input id="name" defaultValue="Pedro Duarte" />
-                    </div>
-                    <div className="space-y-1">
-                      <Label htmlFor="username">Username</Label>
-                      <Input id="username" defaultValue="@peduarte" />
-                    </div>
-                  </CardContent>
-                  <CardFooter>
-                    <Button>Save changes</Button>
-                  </CardFooter>
-                </Card>
-              </TabsContent>
-              <TabsContent value="password">
-                <Card>
-                  <CardHeader>
-                    <CardTitle>Password</CardTitle>
-                    <CardDescription>
-                      Change your password here. After saving, you'll be logged out.
-                    </CardDescription>
-                  </CardHeader>
-                  <CardContent className="space-y-2">
-                    <div className="space-y-1">
-                      <Label htmlFor="current">Current password</Label>
-                      <Input id="current" type="password" />
-                    </div>
-                    <div className="space-y-1">
-                      <Label htmlFor="new">New password</Label>
-                      <Input id="new" type="password" />
-                    </div>
-                  </CardContent>
-                  <CardFooter>
-                    <Button>Save password</Button>
-                  </CardFooter>
-                </Card>
-              </TabsContent>
-            </Tabs>
-          </CardContent>
-        </Card>
-      </div>
+    <div className="h-[20rem] md:h-[40rem] [perspective:1000px] relative b flex flex-col max-w-5xl mx-auto w-full  items-start justify-start my-40">
+      <Tabs tabs={tabs} />
     </div>
-  )
+  );
 }
 
+const DummyContent = () => {
+  return (
+    <div className="object-cover object-left-top h-[60%]  md:h-[90%] absolute -bottom-10 inset-x-0 w-[90%] rounded-xl mx-auto" />
+  );
+};

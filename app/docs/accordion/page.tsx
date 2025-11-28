@@ -1,51 +1,21 @@
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import { ComponentWrapper } from "@/components/docs/component-wrapper";
+import { AccordionDemo } from "./demo";
+import fs from "fs";
+import path from "path";
 
-export default function AccordionPage() {
+export default async function AccordionPage() {
+  const filePath = path.join(process.cwd(), "components/ui/accordion.tsx");
+  const code = fs.readFileSync(filePath, "utf8");
+
   return (
-    <div className="space-y-6">
-      <div>
-        <h1 className="text-3xl font-bold">Accordion</h1>
-        <p className="text-muted-foreground">A vertically stacked set of interactive headings that each reveal a section of content.</p>
-      </div>
-      
-      <div className="flex flex-col gap-4">
-        <Card>
-          <CardHeader>
-            <CardTitle>Default</CardTitle>
-          </CardHeader>
-          <CardContent>
-             <Accordion type="single" collapsible className="w-full">
-              <AccordionItem value="item-1">
-                <AccordionTrigger>Is it accessible?</AccordionTrigger>
-                <AccordionContent>
-                  Yes. It adheres to the WAI-ARIA design pattern.
-                </AccordionContent>
-              </AccordionItem>
-              <AccordionItem value="item-2">
-                <AccordionTrigger>Is it styled?</AccordionTrigger>
-                <AccordionContent>
-                  Yes. It comes with default styles that matches the other
-                  components&apos; aesthetic.
-                </AccordionContent>
-              </AccordionItem>
-              <AccordionItem value="item-3">
-                <AccordionTrigger>Is it animated?</AccordionTrigger>
-                <AccordionContent>
-                  Yes. It&apos;s animated by default, but you can disable it if you
-                  prefer.
-                </AccordionContent>
-              </AccordionItem>
-            </Accordion>
-          </CardContent>
-        </Card>
-      </div>
-    </div>
-  )
+    <ComponentWrapper
+      title="Accordion"
+      description="A vertically stacked set of interactive headings that each reveal a section of content."
+      componentName="accordion"
+      dependencies="@radix-ui/react-accordion"
+      code={code}
+    >
+      <AccordionDemo />
+    </ComponentWrapper>
+  );
 }
-

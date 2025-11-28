@@ -8,6 +8,8 @@ export const metadata: Metadata = {
   description: "A comic-style UI library based on shadcn/ui",
 };
 
+import { Toaster } from "@/components/ui/sonner"
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -26,6 +28,7 @@ export default function RootLayout({
             disableTransitionOnChange
       >
         {children}
+        <Toaster />
           </ThemeProvider>
       </body>
     </html>

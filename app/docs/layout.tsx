@@ -9,7 +9,7 @@ export default function DocsLayout({
     <div className="grid min-h-screen w-full lg:grid-cols-[280px_1fr]">
       <DocsSidebar />
       <div className="flex flex-col">
-        <header className="flex h-14 items-center gap-4 border-b bg-muted/40 px-6 lg:h-[60px] lg:px-6">
+        <header className="flex h-14 items-center gap-4 border-b bg-topbar px-6 lg:h-[60px] lg:px-6">
           <div className="w-full flex-1">
              {/* Header content like search could go here */}
              <h3 className="font-bold font-display text-xl tracking-wide font-normal">Documentation</h3>

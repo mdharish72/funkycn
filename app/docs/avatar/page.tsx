@@ -1,35 +1,21 @@
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import { ComponentWrapper } from "@/components/docs/component-wrapper";
+import { AvatarDemo } from "./demo";
+import fs from "fs";
+import path from "path";
 
-export default function AvatarPage() {
+export default async function AvatarPage() {
+  const filePath = path.join(process.cwd(), "components/ui/avatar.tsx");
+  const code = fs.readFileSync(filePath, "utf8");
+
   return (
-    <div className="space-y-6">
-      <div>
-        <h1 className="text-3xl font-bold">Avatar</h1>
-        <p className="text-muted-foreground">An image element with a fallback for representing the user.</p>
-      </div>
-      
-      <div className="flex flex-col gap-4">
-        <Card>
-          <CardHeader>
-            <CardTitle>Default</CardTitle>
-          </CardHeader>
-          <CardContent className="flex items-center gap-4">
-            <Avatar>
-              <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
-              <AvatarFallback>CN</AvatarFallback>
-            </Avatar>
-            <Avatar>
-              <AvatarImage src="https://github.com/vercel.png" alt="@vercel" />
-              <AvatarFallback>VC</AvatarFallback>
-            </Avatar>
-            <Avatar>
-              <AvatarFallback>FK</AvatarFallback>
-            </Avatar>
-          </CardContent>
-        </Card>
-      </div>
-    </div>
-  )
+    <ComponentWrapper
+      title="Avatar"
+      description="An image element with a fallback for representing the user."
+      componentName="avatar"
+      dependencies="@radix-ui/react-avatar"
+      code={code}
+    >
+      <AvatarDemo />
+    </ComponentWrapper>
+  );
 }
-
