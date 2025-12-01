@@ -1,70 +1,21 @@
-"use client";
+import { ComponentWrapper } from "@/components/docs/component-wrapper";
+import { TabsDemo } from "./demo";
+import fs from "fs";
+import path from "path";
 
-import { Tabs } from "@/components/ui/animated-tabs";
-
-export default function TabsDemo() {
-  const tabs = [
-    {
-      title: "Product",
-      value: "product",
-      content: (
-        <div className="w-full overflow-hidden relative h-full rounded-2xl p-10 text-xl md:text-4xl font-bold text-white bg-gradient-to-br from-purple-700 to-violet-900 comic-border-2 comic-shadow-2">
-          <p>Product Tab</p>
-          <DummyContent />
-        </div>
-      ),
-    },
-    {
-      title: "Services",
-      value: "services",
-      content: (
-        <div className="w-full overflow-hidden relative h-full rounded-2xl p-10 text-xl md:text-4xl font-bold text-white bg-gradient-to-br from-yellow-700 to-orange-900 comic-border-2 comic-shadow-2">
-          <p>Services tab</p>
-          <DummyContent />
-        </div>
-      ),
-    },
-    {
-      title: "Playground",
-      value: "playground",
-      content: (
-        <div className="w-full overflow-hidden relative h-full rounded-2xl p-10 text-xl md:text-4xl font-bold text-white bg-gradient-to-br from-green-700 to-emerald-900 comic-border-2 comic-shadow-2">
-          <p>Playground tab</p>
-          <DummyContent />
-        </div>
-      ),
-    },
-    {
-      title: "Content",
-      value: "content",
-      content: (
-        <div className="w-full overflow-hidden relative h-full rounded-2xl p-10 text-xl md:text-4xl font-bold text-white bg-gradient-to-br from-blue-700 to-cyan-900 comic-border-2 comic-shadow-2">
-          <p>Content tab</p>
-          <DummyContent />
-        </div>
-      ),
-    },
-    {
-      title: "Random",
-      value: "random",
-      content: (
-        <div className="w-full overflow-hidden relative h-full rounded-2xl p-10 text-xl md:text-4xl font-bold text-white bg-gradient-to-br from-pink-700 to-rose-900 comic-border-2 comic-shadow-2">
-          <p>Random tab</p>
-          <DummyContent />
-        </div>
-      ),
-    },
-  ];
+export default async function TabsPage() {
+  const filePath = path.join(process.cwd(), "components/ui/tabs.tsx");
+  const code = fs.readFileSync(filePath, "utf8");
 
   return (
-    <div className="h-[20rem] md:h-[40rem] [perspective:1000px] relative b flex flex-col max-w-5xl mx-auto w-full  items-start justify-start my-40">
-      <Tabs tabs={tabs} />
-    </div>
+    <ComponentWrapper
+      title="Tabs"
+      description="A set of layered sections of content—known as tab panels—that are displayed one at a time."
+      componentName="tabs"
+      dependencies="@radix-ui/react-tabs"
+      code={code}
+    >
+      <TabsDemo />
+    </ComponentWrapper>
   );
 }
-
-const DummyContent = () => {
-  return (
-    <div className="object-cover object-left-top h-[60%]  md:h-[90%] absolute -bottom-10 inset-x-0 w-[90%] rounded-xl mx-auto" />
-  );
-};

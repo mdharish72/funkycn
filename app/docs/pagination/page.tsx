@@ -1,39 +1,21 @@
-import {
-  Pagination,
-  PaginationContent,
-  PaginationEllipsis,
-  PaginationItem,
-  PaginationLink,
-  PaginationNext,
-  PaginationPrevious,
-} from "@/components/ui/pagination"
+import { ComponentWrapper } from "@/components/docs/component-wrapper";
+import { PaginationDemo } from "./demo";
+import fs from "fs";
+import path from "path";
 
-export default function PaginationDemo() {
+export default async function PaginationPage() {
+  const filePath = path.join(process.cwd(), "components/ui/pagination.tsx");
+  const code = fs.readFileSync(filePath, "utf8");
+
   return (
-    <Pagination>
-      <PaginationContent>
-        <PaginationItem>
-          <PaginationPrevious href="#" />
-        </PaginationItem>
-        <PaginationItem>
-          <PaginationLink href="#">1</PaginationLink>
-        </PaginationItem>
-        <PaginationItem>
-          <PaginationLink href="#" isActive>
-            2
-          </PaginationLink>
-        </PaginationItem>
-        <PaginationItem>
-          <PaginationLink href="#">3</PaginationLink>
-        </PaginationItem>
-        <PaginationItem>
-          <PaginationEllipsis />
-        </PaginationItem>
-        <PaginationItem>
-          <PaginationNext href="#" />
-        </PaginationItem>
-      </PaginationContent>
-    </Pagination>
-  )
+    <ComponentWrapper
+      title="Pagination"
+      description="Pagination with page navigation, next and previous links."
+      componentName="pagination"
+      dependencies=""
+      code={code}
+    >
+      <PaginationDemo />
+    </ComponentWrapper>
+  );
 }
-

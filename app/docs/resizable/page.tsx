@@ -1,27 +1,21 @@
-import {
-  ResizableHandle,
-  ResizablePanel,
-  ResizablePanelGroup,
-} from "@/components/ui/resizable"
+import { ComponentWrapper } from "@/components/docs/component-wrapper";
+import { ResizableDemo } from "./demo";
+import fs from "fs";
+import path from "path";
 
-export default function ResizableDemo() {
+export default async function ResizablePage() {
+  const filePath = path.join(process.cwd(), "components/ui/resizable.tsx");
+  const code = fs.readFileSync(filePath, "utf8");
+
   return (
-    <ResizablePanelGroup
-      direction="horizontal"
-      className="min-h-[200px] max-w-md rounded-lg border border-border comic-shadow-2 bg-card"
+    <ComponentWrapper
+      title="Resizable"
+      description="Accessible resizable panel groups and layouts with keyboard support."
+      componentName="resizable"
+      dependencies="react-resizable-panels"
+      code={code}
     >
-      <ResizablePanel defaultSize={25}>
-        <div className="flex h-full items-center justify-center p-6">
-          <span className="font-semibold font-display">One</span>
-        </div>
-      </ResizablePanel>
-      <ResizableHandle withHandle />
-      <ResizablePanel defaultSize={75}>
-        <div className="flex h-full items-center justify-center p-6">
-          <span className="font-semibold font-display">Two</span>
-        </div>
-      </ResizablePanel>
-    </ResizablePanelGroup>
-  )
+      <ResizableDemo />
+    </ComponentWrapper>
+  );
 }
-

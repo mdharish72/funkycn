@@ -1,26 +1,21 @@
-"use client"
+import { ComponentWrapper } from "@/components/docs/component-wrapper";
+import { SonnerDemo } from "./demo";
+import fs from "fs";
+import path from "path";
 
-import { toast } from "sonner"
+export default async function SonnerPage() {
+  const filePath = path.join(process.cwd(), "components/ui/sonner.tsx");
+  const code = fs.readFileSync(filePath, "utf8");
 
-import { Button } from "@/components/ui/button"
-
-export default function SonnerDemo() {
   return (
-    <Button
-      variant="outline"
-      onClick={() =>
-        toast("Event has been created", {
-          description: "Sunday, December 03, 2023 at 9:00 AM",
-          action: {
-            label: "Undo",
-            onClick: () => console.log("Undo"),
-          },
-        })
-      }
-      className="comic-shadow-2 border-2 border-border"
+    <ComponentWrapper
+      title="Sonner"
+      description="An opinionated toast component for React."
+      componentName="sonner"
+      dependencies="sonner"
+      code={code}
     >
-      Show Toast
-    </Button>
-  )
+      <SonnerDemo />
+    </ComponentWrapper>
+  );
 }
-
