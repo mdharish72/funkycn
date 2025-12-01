@@ -1,14 +1,21 @@
-"use client"
+import { ComponentWrapper } from "@/components/docs/component-wrapper";
+import { ToggleDemo } from "./demo";
+import fs from "fs";
+import path from "path";
 
-import { Bold } from "lucide-react"
+export default async function TogglePage() {
+  const filePath = path.join(process.cwd(), "components/ui/toggle.tsx");
+  const code = fs.readFileSync(filePath, "utf8");
 
-import { Toggle } from "@/components/ui/toggle"
-
-export default function ToggleDemo() {
   return (
-    <Toggle aria-label="Toggle bold">
-      <Bold className="h-4 w-4" />
-    </Toggle>
-  )
+    <ComponentWrapper
+      title="Toggle"
+      description="A two-state button that can be either on or off."
+      componentName="toggle"
+      dependencies="@radix-ui/react-toggle"
+      code={code}
+    >
+      <ToggleDemo />
+    </ComponentWrapper>
+  );
 }
-

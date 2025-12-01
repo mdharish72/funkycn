@@ -15,7 +15,7 @@ export default function DocsLayout({
              <h3 className="font-bold font-display text-xl tracking-wide font-normal">Documentation</h3>
           </div>
         </header>
-        <main className="flex flex-1 flex-col gap-4 p-4 lg:gap-6 lg:p-6">
+        <main className="flex flex-1 flex-col gap-4 p-4 lg:gap-6 lg:p-6 bg-[#fafafa]">
           {children}
         </main>
       </div>

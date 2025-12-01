@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { ThemeProvider } from "@/components/theme-provider"
+import { Providers } from "./providers"
 import { display, body } from "@/lib/fonts"
 import "./globals.css";
 
@@ -20,16 +20,18 @@ export default function RootLayout({
       <body
         className={`${display.variable} ${body.variable} antialiased min-h-screen bg-background font-body text-foreground`}
       >
-        <ThemeProvider
-            attribute="class"
-            defaultTheme="light"
-            forcedTheme="light"
-            enableSystem={false}
-            disableTransitionOnChange
+        <Providers
+            themeProps={{
+              attribute: "class",
+              defaultTheme: "light",
+              forcedTheme: "light",
+              enableSystem: false,
+              disableTransitionOnChange: true,
+            }}
       >
         {children}
         <Toaster />
-          </ThemeProvider>
+          </Providers>
       </body>
     </html>
   );

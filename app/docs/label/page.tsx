@@ -1,28 +1,21 @@
-// import { Checkbox } from "@/components/ui/checkbox" // We don't have checkbox yet
-import { Label } from "@/components/ui/label"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import { ComponentWrapper } from "@/components/docs/component-wrapper";
+import { LabelDemo } from "./demo";
+import fs from "fs";
+import path from "path";
 
-export default function LabelPage() {
+export default async function LabelPage() {
+  const filePath = path.join(process.cwd(), "components/ui/label.tsx");
+  const code = fs.readFileSync(filePath, "utf8");
+
   return (
-    <div className="space-y-6">
-      <div>
-        <h1 className="text-3xl font-bold">Label</h1>
-        <p className="text-muted-foreground">Renders an accessible label associated with controls.</p>
-      </div>
-      
-      <div className="flex flex-col gap-4">
-        <Card>
-          <CardHeader>
-            <CardTitle>Default</CardTitle>
-          </CardHeader>
-          <CardContent>
-             <div className="grid w-full max-w-sm items-center gap-1.5">
-              <Label htmlFor="terms">Accept terms and conditions</Label>
-            </div>
-          </CardContent>
-        </Card>
-      </div>
-    </div>
-  )
+    <ComponentWrapper
+      title="Label"
+      description="Renders an accessible label associated with controls."
+      componentName="label"
+      dependencies="@radix-ui/react-label"
+      code={code}
+    >
+      <LabelDemo />
+    </ComponentWrapper>
+  );
 }
-
