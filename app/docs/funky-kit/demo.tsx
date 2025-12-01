@@ -75,6 +75,7 @@ import {
   FunkyTooltipTrigger,
 } from "@/components/ui/funky-tooltip";
 import { Bold, Italic, Rocket, Star, Underline, Zap } from "lucide-react";
+import Link from "next/link";
 
 export function FunkyKitDemo() {
   return (
@@ -89,6 +90,18 @@ export function FunkyKitDemo() {
         <p className="text-2xl font-body max-w-2xl mx-auto text-muted-foreground">
           Components that pop! Built for bold statements and playful interfaces.
         </p>
+        <div className="flex flex-wrap items-center justify-center gap-4 mt-6">
+          <Link href="/docs">
+            <FunkyButton size="lg" variant="default">
+              Get Started
+            </FunkyButton>
+          </Link>
+          <Link href="https://github.com/shadcn-ui/ui" target="_blank">
+            <FunkyButton size="lg" variant="outline">
+              GitHub
+            </FunkyButton>
+          </Link>
+        </div>
       </div>
 
       {/* 1. Basic Actions & Indicators */}
